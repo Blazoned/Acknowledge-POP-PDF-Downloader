@@ -1,0 +1,60 @@
+﻿@using Acknowledge.PDFDownloader.POP.Models;
+@model StarrFormViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>StarrFormPDFView</title>
+    </head>
+    <body>
+        <h2>@Model.Title</h2>
+        <label>Aangevraagd: @Model.FormDateRequested</label><br />
+        <label>Ingevuld: @Model.FormDateCompleted</label><br />
+        <br />
+        <div>
+            <label>Situatie:</label>
+            <p>
+                @Model.Situation
+            </p>
+
+            <label>Taak:</label>
+            <p>
+                @Model.Task
+            </p>
+
+            <label>Actie:</label>
+            <p>
+                @Model.Action
+            </p>
+
+            <label>Resultaat:</label>
+            <p>
+                @Model.Result
+            </p>
+
+            <label>Reflectie:</label>
+            <p>
+                @Model.Reflection
+            </p>
+
+            <label>Gevoel:</label>
+            <p>
+                @Model.Feeling
+            </p>
+            <p>
+                <!-- INSERT GEVOEL ICOON -->
+                @Model.HappyLevel
+            </p>
+
+            <label>@Model.SkillType.ToString():</label>
+            <p>
+                @Model.Skill
+            </p>
+        </div>
+    </body>
+</html>

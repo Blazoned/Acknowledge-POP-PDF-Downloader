@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Acknowledge.PDFDownloader.POP.Models;
+using Acknowledge.PDFDownloader.POP.ViewModels;
 
 namespace Acknowledge.PDFDownloader.POP.Controllers
 {
@@ -15,18 +16,25 @@ namespace Acknowledge.PDFDownloader.POP.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Download()
         {
-            ViewData["Message"] = "Your application description page.";
+            StarrFormViewModel vm = new StarrFormViewModel()
+            {
+                Title = "De titel van het formulier :P",
+                Situation = "Een enorm uitgebreid en gedetaileerd overzicht van willekeurige situaties die je STARR zou moeten helpen aantonen.",
+                Task = "De taak die je hebt uitgevoerd die je STARR zou moeten helpen aantonen.",
+                Action = "Een handeling(en) die je hebt uitgevoerd om je STARR te proberen aan te tonen.",
+                Result = "Het resultaat van de handelingen die je STARR zou moeten aantonen.",
+                Reflection = "De terug blik op je process van de gehele situatie.",
+                Feeling = "De beschrijving van je gevoel over het process staat hier.",
+                HappyLevel = EHappinessLevel.Neutral,
+                SkillType = ESkillType.Softskill,
+                Skill = ESoftSkills.Communication.GetDescription(),
+                FormDateCompleted = DateTime.Now.ToShortDateString(),
+                FormDateRequested = DateTime.Now.AddDays(-2.0).ToShortDateString()
+            };
 
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            return View("StarrFormPDF", vm);
         }
 
         public IActionResult Error()
