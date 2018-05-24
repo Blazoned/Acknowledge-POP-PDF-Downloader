@@ -1,0 +1,41 @@
+﻿body {
+    padding-top: 85px;
+    padding-right: 65px;
+    padding-bottom: 85px;
+    padding-left: 65px;
+}
+
+.verticalCenter {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.leftAlign {
+    float: left;
+}
+
+.rightAlign {
+    float: right;
+}
+
+.leftSplit {
+    border: none;
+    border-left: 1px solid hsla(200, 10%, 50%,100);
+}
+
+.rightSplit {
+    border: none;
+    border-left: 1px solid hsla(200, 10%, 50%,100);
+}
+
+#feelingHeader {
+    float: left;
+}
+
+img.icon {
+    margin: 0;
+    padding: 0;
+    padding-left: 1%;
+    height: 35px;
+    width: 35px;
+}

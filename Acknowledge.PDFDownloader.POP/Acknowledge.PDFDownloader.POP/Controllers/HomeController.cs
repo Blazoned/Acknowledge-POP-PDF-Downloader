@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Acknowledge.PDFDownloader.POP.Models;
 using Acknowledge.PDFDownloader.POP.ViewModels;
+using Rotativa.AspNetCore;
 
 namespace Acknowledge.PDFDownloader.POP.Controllers
 {
@@ -27,14 +28,16 @@ namespace Acknowledge.PDFDownloader.POP.Controllers
                 Result = "Het resultaat van de handelingen die je STARR zou moeten aantonen.",
                 Reflection = "De terug blik op je process van de gehele situatie.",
                 Feeling = "De beschrijving van je gevoel over het process staat hier.",
-                HappyLevel = EHappinessLevel.Neutral,
+                HappyLevel = EHappinessLevel.Happy,
                 SkillType = ESkillType.Softskill,
-                Skill = ESoftSkills.Communication.GetDescription(),
+                Skill = "Undertale Spelen",
+                Softskill = ESoftSkills.Communication,
                 FormDateCompleted = DateTime.Now.ToShortDateString(),
                 FormDateRequested = DateTime.Now.AddDays(-2.0).ToShortDateString()
             };
 
-            return View("StarrFormPDF", vm);
+            // return View("StarrFormPDF", vm);
+            return new ViewAsPdf("StarrFormPDF", vm);
         }
 
         public IActionResult Error()

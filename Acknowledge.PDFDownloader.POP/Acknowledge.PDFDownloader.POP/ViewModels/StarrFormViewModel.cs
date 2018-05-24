@@ -17,6 +17,7 @@ namespace Acknowledge.PDFDownloader.POP.ViewModels
         public string Feeling { get; set; }
         public EHappinessLevel HappyLevel { get; set; }
         public ESkillType SkillType { get; set; }
+        public ESoftSkills Softskill { get; set; }
         public string Skill { get; set; }
         public string FormDateRequested { get; set; }
         public string FormDateCompleted { get; set; }

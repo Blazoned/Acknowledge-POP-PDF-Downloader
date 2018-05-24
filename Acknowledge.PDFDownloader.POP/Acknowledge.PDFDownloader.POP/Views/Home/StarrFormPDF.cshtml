@@ -9,51 +9,76 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
-        <title>StarrFormPDFView</title>
+        <title>STARR Formulier - @Model.Title</title>
+        <link rel="stylesheet" href="~/css/pdfForm.css"/>
     </head>
     <body>
-        <h2>@Model.Title</h2>
-        <label>Aangevraagd: @Model.FormDateRequested</label><br />
-        <label>Ingevuld: @Model.FormDateCompleted</label><br />
-        <br />
-        <div>
-            <label>Situatie:</label>
-            <p>
+        <div class="headerForm">
+            <h2 class="title">@Model.Title</h2>
+            <h2 class="dateField">Aangevraagd: @Model.FormDateRequested</h2>
+            <h2 class="dateField">Ingevuld: @Model.FormDateCompleted</h2>
+        </div>
+        <div class="bodyForm">
+
+            <p class="textField">
+                <h3>Situatie:</h3>
                 @Model.Situation
             </p>
 
-            <label>Taak:</label>
-            <p>
+            <p class="textField">
+                <h3>Taak:</h3>
                 @Model.Task
             </p>
 
-            <label>Actie:</label>
-            <p>
+            <p class="textField">
+                <h3>Actie:</h3>
                 @Model.Action
             </p>
 
-            <label>Resultaat:</label>
-            <p>
+            <p class="textField">
+                <h3>Resultaat:</h3>
                 @Model.Result
             </p>
 
-            <label>Reflectie:</label>
-            <p>
+            <p class="textField">
+                <h3>Reflectie:</h3>
                 @Model.Reflection
             </p>
 
-            <label>Gevoel:</label>
-            <p>
+            <p class="textField">
+                <div id="header">
+                    <h3 id="feelingHeader" class="verticalCenter">
+                        <span class="verticalCenter">
+                            Gevoel:
+                        </span>
+                    </h3>
+                    @switch (Model.HappyLevel)
+                    {
+                        case EHappinessLevel.Happy:
+                            <img class="icon verticalCenter leftSplit rightAlign" src="~/images/Smile Positive.png" />
+                        break;
+                        case EHappinessLevel.Neutral:
+                            <img class="icon verticalCenter leftSplit rightAlign" src="~/images/Smile Neutral.png" />
+                        break;
+                        case EHappinessLevel.Sad:
+                            <img class="icon verticalCenter leftSplit rightAlign" src="~/images/Smile Negative.png" />
+                        break;
+                    }
+                </div>
                 @Model.Feeling
             </p>
-            <p>
-                <!-- INSERT GEVOEL ICOON -->
-                @Model.HappyLevel
-            </p>
-
-            <label>@Model.SkillType.ToString():</label>
-            <p>
-                @Model.Skill
+            
+            <p class="textField">
+            <h3>@Model.SkillType.ToString():</h3>
+                @switch (Model.SkillType)
+                {
+                    case ESkillType.Hardskill:
+                        @Model.Skill
+                    break;
+                    case ESkillType.Softskill:
+                        @Model.Softskill.GetDescription()
+                    break;
+                }
             </p>
         </div>
     </body>
